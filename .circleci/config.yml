@@ -10,8 +10,12 @@ jobs:
       - checkout
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
+    dependencies:
+     pre:
+      - mkdir $ANDROID_HOME/licenses
+      - cat android-sdk-license > $ANDROID_HOME/licenses/android-sdk-license
       - run:
-         name: Chmod permissions #if permission for Gradlew Dependencies fail, use this.
+         name: Chmod permissions 
          command: sudo chmod +x ./gradlew
       - run:
           name: Download Dependencies
