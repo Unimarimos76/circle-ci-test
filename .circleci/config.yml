@@ -28,8 +28,8 @@ jobs:
           name: Run Tests
           command: ./gradlew lint test
 workflows:
+  version: 2
   build:
-    version: 2
-      jobs:
-        - build
+    jobs:
+      - build
 
